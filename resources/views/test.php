@@ -1,1 +1,3 @@
 heloo
+
+Semangat Magang Guys!
