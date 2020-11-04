@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>@yield('title')</title>
@@ -8,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
 
 </head>
+
 <body>
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -21,13 +23,13 @@
                 </button>
                 <a class="navbar-brand" href="/">Aplikasi Formulir Rencana Studi</a>
             </div>
-    
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/">Mahasiswa</a></li>
-                    <li><a href="/matkul">Mata Kuliah</a></li>
-                    <li><a href="/krs">Formulir Rencana Studi</a></li>
+                    <li><a href="/index-dosen" style="font-size:15px; font-weight:bolder">Dashboard Dosen</a></li>
+                    <li><a href="/create-dosen">Dosen</a></li>
+                    <li><a href="/">Mata Kuliah</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div>
@@ -40,31 +42,32 @@
     <script src="/assets/js/jquery-2.2.0.js"></script>
     <script src="/assets/js/bootstrap.js"></script>
     <script type="text/javascript">
-    $(document).ready(function(){
-        var jumlahsks=0;
-        var tmp=0;
-        $(':checkbox').click(function(){
-            if ($(this).is(":checked") == true ){
-                var tmp=parseInt($(this).attr('title'));
-                jumlahsks = jumlahsks + tmp;
-                if(jumlahsks > 24){
-                    alert('PERINGATAN :\n SKS saudara sudah lebih dari 24 SKS\n Pemilihan mata kuliah terakhir dibatalkan');
-                    $(this).attr("checked", false);
-                    jumlahsks=jumlahsks-tmp; 
-                    
+        $(document).ready(function() {
+            var jumlahsks = 0;
+            var tmp = 0;
+            $(':checkbox').click(function() {
+                if ($(this).is(":checked") == true) {
+                    var tmp = parseInt($(this).attr('title'));
+                    jumlahsks = jumlahsks + tmp;
+                    if (jumlahsks > 24) {
+                        alert('PERINGATAN :\n SKS saudara sudah lebih dari 24 SKS\n Pemilihan mata kuliah terakhir dibatalkan');
+                        $(this).attr("checked", false);
+                        jumlahsks = jumlahsks - tmp;
+
+                    }
+                    var elem = document.getElementById("sks");
+                    elem.value = jumlahsks;
+
+                } else {
+                    var tmp = parseInt($(this).attr('title'));
+                    jumlahsks = jumlahsks - tmp;
+                    var elem = document.getElementById("sks");
+                    elem.value = jumlahsks;
                 }
-                var elem = document.getElementById("sks");
-                elem.value = jumlahsks;
-                            
-            } else {
-                var tmp=parseInt($(this).attr('title'));
-                jumlahsks = jumlahsks-tmp;
-                var elem = document.getElementById("sks");
-                elem.value = jumlahsks;
-            }
+            });
         });
-    });
-    jumlahsks=0;
+        jumlahsks = 0;
     </script>
 </body>
+
 </html>
