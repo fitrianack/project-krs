@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css.map">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
 
@@ -19,15 +21,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Aplikasi Formulir Rencana Studi</a>
+                <a class="navbar-brand" href="/dashboard">Aplikasi Kartu Rencana Studi</a>
             </div>
     
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/">Mahasiswa</a></li>
+                    <li><a href="/role">Role User</a></li>
                     <li><a href="/matkul">Mata Kuliah</a></li>
-                    <li><a href="/krs">Formulir Rencana Studi</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div>
