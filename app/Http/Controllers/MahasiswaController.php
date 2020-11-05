@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
 {
+    //Halaman Dashboard
+    public function home()
+    {
+        return view('mahasiswa.dashboard');
+    }
+
+    //lihat mhs
     public function show()
     {
         $mahasiswa = \App\Mahasiswas::all();

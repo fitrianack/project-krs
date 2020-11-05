@@ -21,21 +21,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-<<<<<<< HEAD:resources/views/mahasiswa/layouts/master.blade.php
-                <a class="navbar-brand" href="/">Aplikasi Kartu Rencana Studi</a>
-=======
                 <a class="navbar-brand" href="/dashboard">Aplikasi Kartu Rencana Studi</a>
->>>>>>> 1cf5e73221119c71f529f478c4e2c204b1a50cd6:resources/views/admin/layouts/master.blade.php
             </div>
     
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-<<<<<<< HEAD:resources/views/mahasiswa/layouts/master.blade.php
                     <li><a href="/">Profil</a></li>
                     <li><a href="/matkul">Mata Kuliah</a></li>
                     <li><a href="/krs">Kartu Rencana Studi</a></li>
-=======
 
                 @if(Auth::user()->role == 'admin')
                     <li><a href="/role">Role User</a></li>
@@ -52,7 +46,6 @@
                     <li><a href="#">Profil</a></li>
                     <li><a href="#">Mata Kuliah</a></li>
                 @endif
->>>>>>> 1cf5e73221119c71f529f478c4e2c204b1a50cd6:resources/views/admin/layouts/master.blade.php
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">

@@ -17,11 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< HEAD
+// --------------SISI MAHASISWA------------
+Route::get('/mahasiswa/dashboard', 'MahasiswaController@home');
 Route::get('/mahasiswa/show', 'MahasiswaController@show');
 Route::get('/mahasiswa/create', 'MahasiswaController@create');
 Route::post('/mahasiswa/create', 'MahasiswaController@tambah');
-=======
+
 //--------------------------------------SISI ADMIN-----------------------
 
 // Role user
@@ -45,4 +46,3 @@ Route::get('/matkul/delete/{kode_matkul}', 'AdminController@delete_matkul');
 Auth::routes();
 Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
->>>>>>> 1cf5e73221119c71f529f478c4e2c204b1a50cd6

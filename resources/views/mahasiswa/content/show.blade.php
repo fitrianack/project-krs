@@ -1,7 +1,7 @@
 @extends('mahasiswa.layouts.master')
 @section('content')
 
-<a href="/mahasiswa/create" class="btn btn-default pull-right">Tambah</a>
+<a href="/mahasiswa/profil" class="btn btn-default pull-right">Tambah</a>
 
 <br><br><br>
 
