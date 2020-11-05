@@ -25,15 +25,9 @@ class DosenController extends Controller
 
     public function store(Request $request)
     {
-        $kodematkularray = $request->input('checkbox-array');
-        $kodematkularrayy = array();
-
-        foreach ($kodematkularray as $kode) {
-            $kodematkularrayy[] = $kode;
-        }
         $dosen = new dosen;
         $dosen->nama_dosen = $request->nama_dosen;
-        $dosen->kode_matkul = json_encode($kodematkularrayy);
+        $dosen->kode_matkul = $request->kode_matkul;
         $dosen->save();
 
         if ($dosen) {

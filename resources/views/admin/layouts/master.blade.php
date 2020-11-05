@@ -29,10 +29,14 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-
+<<<<<<< HEAD:resources/views/dosen/layouts/master.blade.php
                     <li><a href="/index-dosen" style="font-size:15px; font-weight:bolder">Dashboard Dosen</a></li>
                     <li><a href="/create-dosen">Dosen</a></li>
                     <li><a href="/">Mata Kuliah</a></li>
+=======
+                    <li><a href="/role">Role User</a></li>
+                    <li><a href="/matkul">Mata Kuliah</a></li>
+>>>>>>> 51c033d877369dada2c0cbe5fc9d3d77954e460b:resources/views/admin/layouts/master.blade.php
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div>
