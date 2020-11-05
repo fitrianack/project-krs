@@ -19,15 +19,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Aplikasi Formulir Rencana Studi</a>
+                <a class="navbar-brand" href="/">Aplikasi Kartu Rencana Studi</a>
             </div>
     
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/">Mahasiswa</a></li>
+                    <li><a href="/">Profil</a></li>
                     <li><a href="/matkul">Mata Kuliah</a></li>
-                    <li><a href="/krs">Formulir Rencana Studi</a></li>
+                    <li><a href="/krs">Kartu Rencana Studi</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div>

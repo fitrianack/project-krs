@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/mahasiswa/show', 'MahasiswaController@show');
+Route::get('/mahasiswa/create', 'MahasiswaController@create');
+Route::post('/mahasiswa/create', 'MahasiswaController@tambah');
