@@ -27,25 +27,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/">Profil</a></li>
+                    <li><a href="/krs">Role User</a></li>
                     <li><a href="/matkul">Mata Kuliah</a></li>
-                    <li><a href="/krs">Kartu Rencana Studi</a></li>
-
-                @if(Auth::user()->role == 'admin')
-                    <li><a href="/role">Role User</a></li>
-                    <li><a href="/matkul">Mata Kuliah</a></li>
-                @endif
-
-                @if(Auth::user()->role == 'mahasiswa')
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Mata Kuliah</a></li>
-                    <li><a href="#">KRS</a></li>
-                @endif
-
-                @if(Auth::user()->role == 'dosen')
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Mata Kuliah</a></li>
-                @endif
                 <li class="nav-item">
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

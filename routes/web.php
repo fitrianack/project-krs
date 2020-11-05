@@ -19,9 +19,15 @@ Route::get('/', function () {
 
 // --------------SISI MAHASISWA------------
 Route::get('/mahasiswa/dashboard', 'MahasiswaController@home');
-Route::get('/mahasiswa/show', 'MahasiswaController@show');
-Route::get('/mahasiswa/create', 'MahasiswaController@create');
-Route::post('/mahasiswa/create', 'MahasiswaController@tambah');
+
+//pilih KRS
+Route::get('mahasiswa/lihatkrs', 'MahasiswaController@krs');
+Route::post('mahasiswa/pilihkrs', 'MahasiswaController@lihatkrs');
+
+// Profil
+Route::get('mahasiswa/profil', 'MahasiswaController@profil');
+Route::get('mahasiswa/editprofil', 'MahasiswaController@edit');
+Route::match(['get', 'post'], '/mahasiswa/updateprofil', 'MahasiswaController@update')->name('updatemahasiswa');
 
 //--------------------------------------SISI ADMIN-----------------------
 
