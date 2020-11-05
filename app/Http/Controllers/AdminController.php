@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Matakuliah;
-
+use Auth;
 class AdminController extends Controller
 {
     //Halaman Dashboard
     public function home(){
+
+    
         return view('admin.dashboard');
     }
 
