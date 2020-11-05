@@ -30,6 +30,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
 
+
                     <li><a href="/index-dosen" style="font-size:15px; font-weight:bolder">Dashboard Dosen</a></li>
                     <li><a href="/create-dosen">Dosen</a></li>
                     <li><a href="/">Mata Kuliah</a></li>
@@ -78,6 +79,9 @@
                 </ul>
 
                 @endif
+
+                <li><a href="/krs">Role User</a></li>
+                <li><a href="/matkul">Mata Kuliah</a></li>
                 <li class="nav-item">
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
