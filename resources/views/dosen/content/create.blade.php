@@ -1,24 +1,51 @@
 @extends('dosen.layouts.master')
-@section('title', 'Halaman Dosen')
+@section('title', 'Pilih Mata Kuliah')
 
 @section('content')
+<legend>Daftar Mata Kuliah</legend>
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <th style="color: black;">Kode Mata Kuliah</th>
+            <th style="color: black;">Nama Mata Kuliah</th>
+            <th style="color: black;">SKS</th>
+        </tr>
+        <tr>
+            <?php $no = 0; ?>
+            @foreach($matkul as $m)
+            <?php $no++; ?>
+        <tr>
+            <td>{{$m->kode_matkul}}</td>
+            <td>{{$m->nama_matkul}}</td>
+            <td>{{$m->sks}}</td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
 
 <form action="/create-proses-dosen" method="POST" role="form">
     {{ csrf_field()}}
-    <legend>Tambah Data Dosen</legend>
+    <legend>Pilih Mata Kuliah yang akan diampu</legend>
 
-    <div class="form-group">
-        <label for="nama">Nama Dosen</label>
-        <input type="text" class="form-control" id="nama_dosen" name="nama_dosen" placeholder="Isikan Nama">
-        <small class="block text-danger"></small>
+    <div class="row">
+        <div class="col-md-5 pr-1">
+            <div class="form-group">
+                <label for="InputNama">Nama Dosen</label>
+                <input name="name" disabled class="form-control @error('name') is-invalid @enderror" id="InputNama" value="{{$users->name}}">
+                @error('name')<div class="invalid-feedback">{{$message}}</div> @enderror
+            </div>
+        </div>
     </div>
-    <div class="custom-control custom-checkbox">
-        <label for="nama_matkul">Nama Mata Kuliah</label>
-        <br>
-        @foreach ($matkul as $mtkl)
-        <input name="kode_matkul" type="checkbox" class="custom-control-input" id="customCheck1" name="kode_matkul" value="<?= $mtkl->kode_matkul; ?>">(<?= $mtkl->kode_matkul ?>) <?= $mtkl->nama_matkul; ?>(<?= $mtkl->sks; ?> sks)
-        <br>
-        @endforeach
+    <div class="row">
+        <div class="col-md-5 pr-1">
+            <label for="nama_matkul">Nama Mata Kuliah</label>
+            <br>
+            @foreach ($matkul as $mtkl)
+            <input name="kode_matkul" type="checkbox" class="custom-control-input" id="customCheck1" name="kode_matkul" value="<?= $mtkl->kode_matkul; ?>">(<?= $mtkl->kode_matkul ?>) <?= $mtkl->nama_matkul; ?>(<?= $mtkl->sks; ?> sks)
+            <br>
+            @endforeach
+        </div>
     </div>
     <!-- <div class="form-group">
         <label for="nama_matkul">Nama Mata Kuliah</label>

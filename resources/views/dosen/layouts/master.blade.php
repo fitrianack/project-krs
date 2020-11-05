@@ -30,9 +30,23 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
 
-                    <li><a href="/index-dosen" style="font-size:15px; font-weight:bolder">Dashboard Dosen</a></li>
-                    <li><a href="/create-dosen">Dosen</a></li>
-                    <li><a href="/">Mata Kuliah</a></li>
+                    <li><a href="/dashboard-dosen" style="font-size:15px; font-weight:bolder">Dashboard Dosen</a></li>
+                    <li><a href="/index-dosen">Profil</a></li>
+                    <li><a href="/create-dosen">Mata Kuliah</a></li>
+                    <li>
+                        <a href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+                    <li>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div>

@@ -14,4 +14,10 @@ class Matakuliah extends Model
     {
         return $this->hasOne('\App\Dosen', 'kode_dosen', 'kode_dosen');
     }
+
+    public function matkul()
+    {
+        return $this->hasMany('\App\Matakuliah', 'kode_matkul', 'kode_matkul');
+    }
+}
 }

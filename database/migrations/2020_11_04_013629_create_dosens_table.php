@@ -16,8 +16,6 @@ class CreateDosensTable extends Migration
         Schema::create('dosens', function (Blueprint $table) {
             $table->bigIncrements('kode_dosen')->unsigned();
             $table->string('nama_dosen',  50);
-            $table->string('email', 30);
-            $table->string('password', 50);
             $table->bigInteger('kode_matkul')->unsigned();
             $table->timestamps();
         });

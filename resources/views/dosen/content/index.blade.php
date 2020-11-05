@@ -1,41 +1,36 @@
 @extends('dosen.layouts.master')
-@section('title', 'Halaman Dosen')
+@section('title', 'Profil Dosen')
 
 @section('content')
-<div class="card">
-    <!-- Tab panes -->
-    <div class="card-body">
-        <table class="table table-bordered">
-            <tbody>
-                <tr>
-                    <th style="color: black;">No</th>
-                    <th style="color: black;">Kode Dosen</th>
-                    <th style="color: black;">Nama Dosen</th>
-                    <th style="color: black;">Kode Mata Kuliah</th>
-                    <th style="color: black;">Aksi</th>
-                </tr>
-                <tr>
-                    <?php $no = 0; ?>
-                    @foreach($dosen as $d)
-                    <?php $no++; ?>
-                <tr>
-                    <td>{{$no}}</td>
-                    <td>{{$d->kode_dosen}}</td>
-                    <td>{{$d->nama_dosen}}</td>
-                    <td>{{$d->kode_matkul}}</td>
-                    <td>
-                        <a href="/update-dosen/{{$d->kode_dosen}}" class="btn btn-info">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true">Edit</i>
-                        </a>
+<legend>Profil Dosen</legend>
+<div class="card-body">
+    <div class="table-responsive">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-5 pr-1">
+                    <div class="form-group">
+                        <label for="InputNama" style="font-weight: bold;">Nama</label>
+                        <input name="name" disabled class="form-control @error('name') is-invalid @enderror" id="InputNama" value="{{$users->name}}" disabsled="disabled">
+                    </div>
+                </div>
 
-                        <a href="/hapus-dosen/{{$d->kode_dosen}}" class="btn btn-danger" onclick="return confirm('Yakin mau dihapus ?')">
-                            <i class="fa fa-trash" aria-hidden="true">Hapus</i>
-                        </a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+                <div class="col-md-5 pr-1">
+                    <div class="form-group">
+                        <label for="InputEmail" style="font-weight: bold;">Email</label>
+                        <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="InputEmail" value="{{$users->email}}" disabled="disabled">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 pr-1">
+                    <div class="form-group">
+                        <label for="InputAlamat" style="font-weight: bold;">Password</label>
+                        <input name="password" disabled type="password" class="form-control @error('alamat') is-invalid @enderror" id="InputAlamat" value="{{$users->password}}">
+                        @error('password')<div class="invalid-feedback">{{$message}}</div> @enderror
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="/update-dosen2" class="btn btn-primary">Edit Profil</a>
     </div>
-</div>
-@endsection
+    @endsection
