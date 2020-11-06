@@ -10,8 +10,8 @@ class Krs extends Model
     protected $table = 'krs';
     protected $fillable = ['nim', 'kode_matkul'];
 
-    public function mahasiswas(){
-        return $this->belongsTo(krs::class, 'nim', 'nim');
+    public function users(){
+        return $this->belongsTo(krs::class, 'name', 'name');
     }
 
     public function matakuliahs(){
