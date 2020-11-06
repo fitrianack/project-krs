@@ -29,31 +29,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-
-
-                    <li><a href="/index-dosen" style="font-size:15px; font-weight:bolder">Dashboard Dosen</a></li>
-                    <li><a href="/create-dosen">Dosen</a></li>
-                    <li><a href="/">Mata Kuliah</a></li>
-
                     <li><a href="/role">Role User</a></li>
                     <li><a href="/matkul">Mata Kuliah</a></li>
-
-                    @if(Auth::user()->role == 'admin')
-                    <li><a href="/role">Role User</a></li>
-                    <li><a href="/matkul">Mata Kuliah</a></li>
-                    @endif
-
-                    @if(Auth::user()->role == 'mahasiswa')
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Mata Kuliah</a></li>
-                    <li><a href="#">KRS</a></li>
-                    @endif
-
-                    @if(Auth::user()->role == 'dosen')
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Mata Kuliah</a></li>
-                    @endif
-
+                    <li><a href="/logout">Logout</a></li>
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -77,35 +55,6 @@
                     </li>
                     @endguest
                 </ul>
-
-                @endif
-
-                <li><a href="/krs">Role User</a></li>
-                <li><a href="/matkul">Mata Kuliah</a></li>
-                <li class="nav-item">
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-                <li class="nav-item"></li>
-                </ul>
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                    @endguest
-                </ul>
-
             </div><!-- /.navbar-collapse -->
         </div>
     </nav>

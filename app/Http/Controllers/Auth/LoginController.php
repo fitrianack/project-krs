@@ -52,9 +52,9 @@ class LoginController extends Controller
             if (auth()->user()->role == 'admin') {
                 return redirect('/dashboard');
             }elseif (auth()->user()->role == 'dosen'){
-                return "Ini adalah halaman dosen";
+                return redirect()->route('dashboard-dosen');
             }if (auth()->user()->role == 'mahasiswa'){
-                return "Ini adalah halaman mahasiswa";
+                return redirect('/mahasiswa/dashboard');
             }
         }else{
             return redirect()->route('login')

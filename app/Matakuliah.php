@@ -19,5 +19,5 @@ class Matakuliah extends Model
     {
         return $this->hasMany('\App\Matakuliah', 'kode_matkul', 'kode_matkul');
     }
-}
+
 }
