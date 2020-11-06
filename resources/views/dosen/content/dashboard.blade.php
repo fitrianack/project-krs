@@ -16,7 +16,7 @@
                 </tr>
                 <tr>
                     <?php $no = 0; ?>
-                    @foreach($dataa as $d)
+                    @foreach($data as $d)
                     <?php $no++; ?>
                 <tr>
                     <td>{{$no}}</td>
