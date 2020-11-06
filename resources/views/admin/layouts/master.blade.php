@@ -31,7 +31,7 @@
                 <ul class="nav navbar-nav">
 
 
-                    <li><a href="/index-dosen" style="font-size:15px; font-weight:bolder">Dashboard Dosen</a></li>
+                    <li><a href="/dashboard-dosen" style="font-size:15px; font-weight:bolder">Dashboard Dosen</a></li>
                     <li><a href="/create-dosen">Dosen</a></li>
                     <li><a href="/">Mata Kuliah</a></li>
 
@@ -77,8 +77,6 @@
                     </li>
                     @endguest
                 </ul>
-
-                @endif
 
                 <li><a href="/krs">Role User</a></li>
                 <li><a href="/matkul">Mata Kuliah</a></li>

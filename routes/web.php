@@ -17,7 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< HEAD
 //----------------------------------DOSEN-----------------------------------------
 //dashboard dosen
 Route::get('dashboard-dosen', 'DosenController@dashboard')->name('dashboard-dosen');
@@ -39,7 +38,15 @@ Route::match(['get', 'post'], '/updatedatadosen', 'DosenController@updatedata')-
 
 //hapus mata kuliah
 Route::get('hapus-dosen/{kode_dosen}', 'DosenController@destroy')->name('hapus-dosen');
-=======
+
+//pilih matkul
+Route::match(['get', 'post'], '/pilih-matkul', 'DosenController@pilihmatkul')->name('pilih-matkul');
+
+//pilih matkul
+Route::get('edit-matkul', 'DosenController@editmatkul')->name('edit-matkul');
+Route::match(['get', 'post'], '/updatepilihmatkul', 'DosenController@editpilihan')->name('updatepilihmatkul');
+
+
 // --------------SISI MAHASISWA------------
 Route::get('/mahasiswa/dashboard', 'MahasiswaController@home');
 
@@ -51,7 +58,8 @@ Route::post('mahasiswa/pilihkrs', 'MahasiswaController@lihatkrs');
 Route::get('mahasiswa/profil', 'MahasiswaController@profil');
 Route::get('mahasiswa/editprofil', 'MahasiswaController@edit');
 Route::match(['get', 'post'], '/mahasiswa/updateprofil', 'MahasiswaController@update')->name('updatemahasiswa');
->>>>>>> fc14f72c84f15a916546b975d33dfe4002429964
+
+
 
 //--------------------------------------SISI ADMIN-----------------------
 
