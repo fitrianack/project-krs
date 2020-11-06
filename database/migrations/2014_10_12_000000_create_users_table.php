@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->enum('role', ['admin', 'dosen', 'mahasiswa']);
             $table->bigInteger('kode_matkul')->unsigned();
+            $table->integer('kapasitas', 3);
             $table->rememberToken();
             $table->timestamps();
         });

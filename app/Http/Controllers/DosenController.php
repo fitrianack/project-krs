@@ -21,7 +21,11 @@ class DosenController extends Controller
     {
         $dosen = \App\Dosen::all();
         $matkul = \App\Matakuliah::all();
-        return  view('dosen.content.dashboard', compact('dosen', 'matkul'));
+        $users = \App\User::all();
+        $id_user = Auth::user()->id;
+        $data = User::where('id', $id_user)->first();
+        $dataa = User::get();
+        return  view('dosen.content.dashboard', compact('dataa'));
     }
 
     //menampilkan profil dosen
@@ -106,5 +110,50 @@ class DosenController extends Controller
         $destroy = Dosen::find($kode_dosen);
         $destroy->delete();
         return redirect('/dashboard-dosen')->with('status', 'Data Dosen Berhasil Dihapus!');
+    }
+
+    //memilih  mata kuliah untuk dosen
+    public function pilihmatkul(Request $request)
+    {
+        $user_id = Auth::user()->id;
+        $users = User::where('id', $user_id)->first();
+
+
+        if ($request->isMethod('post')) {
+            $data = $request->all();
+
+            User::where(['id' => $user_id])->update([
+                'kode_matkul' => $data['kode_matkul']
+            ]);
+            return redirect('/dashboard-dosen')->with('status', 'Profil Berhasil diperbarui');
+        }
+        return view('dosen.content.dashboard')->with(compact('users'));
+    }
+
+    //mengarahkan ke form edit pilihan matkul
+    public function editmatkul()
+    {
+        $users = User::get();
+        $users = \App\User::where('id', Auth::user()->id)->first();
+        $matkul = \App\Matakuliah::all();
+        return view('dosen.content.editpilihan', compact('users', 'matkul'));
+    }
+
+
+    //mengedit mata kuliah untuk dosen
+    public function editpilihan(Request $request)
+    {
+        $user_id = Auth::user()->id;
+        $users = User::where('id', $user_id)->first();
+
+        if ($request->isMethod('post')) {
+            $data = $request->all();
+
+            User::where(['id' => $user_id])->update([
+                'kode_matkul' => $data['kode_matkul'],  'kapasitas' => $data['kapasitas']
+            ]);
+            return redirect('/dashboard-dosen')->with('status', 'Profil Berhasil diperbarui');
+        }
+        return view('dosen.content.dashboard')->with(compact('users'));
     }
 }
