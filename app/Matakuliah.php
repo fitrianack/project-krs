@@ -7,6 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Matakuliah extends Model
 {
     protected $primaryKey = 'kode_matkul';
-    protected $table = "matakuliahs";
-    protected $fillable = ['nama_matkul', 'sks'];
+
+    protected $fillable = ['kode_matkul', 'nama_matku', 'sks'];
+
+    public function dosen()
+    {
+        return $this->hasOne('\App\Dosen', 'kode_dosen', 'kode_dosen');
+    }
+
+    public function matkul()
+    {
+        return $this->hasMany('\App\Matakuliah', 'kode_matkul', 'kode_matkul');
+    }
+}
 }
