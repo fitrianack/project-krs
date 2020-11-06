@@ -29,17 +29,8 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/">Profil</a></li>
-                    <li><a href="/krs">Kartu Rencana Studi</a></li>
-                    <li class="nav-item">
-                    
-                <li class="nav-item"></li>
+                    <li><a href="/mahasiswa/krs">Kartu Rencana Studi</a></li>
                 </ul>
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                        @endguest
-                    </ul>
             </div><!-- /.navbar-collapse -->
         </div>
     </nav>

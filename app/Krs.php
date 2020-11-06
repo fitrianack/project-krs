@@ -11,7 +11,7 @@ class Krs extends Model
     protected $fillable = ['nim', 'kode_matkul'];
 
     public function users(){
-        return $this->belongsTo(krs::class, 'name', 'name');
+        return $this->belongsTo(User::class, 'nim', 'nim');
     }
 
     public function matakuliahs(){

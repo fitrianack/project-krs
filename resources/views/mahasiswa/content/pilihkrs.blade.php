@@ -4,7 +4,7 @@
 
 @section('content')
 
-<a href="/mahasiswa/pilihkrs" class="btn btn-default pull-right">Tambah</a>
+<a href="/mahasiswa/ambilkrs" class="btn btn-default pull-right">Tambah</a>
 <table class="table table-hover">
     <thead>
         <tr>
@@ -15,11 +15,11 @@
         </tr>
     </thead>
     <tbody>
-    @foreach($krs as $key => $krs)
+    @foreach($krs as $key => $krss)
         <tr>
             <td>{{++$key}}</td>
-            <td>{{$krs->nim}}</td>
-            <td>{{$krs->kode_matkul}}</td>
+            <td>{{$krss->nim}}</td>
+            <td>{{$krss->kode_matkul}}</td>
             <td>
                 <a href="" class="btn btn-warning btn-s">Edit</a>
                 <a href="" class="btn btn-danger btn-s" onclick="return confirm('Apa anda yakin?')">Delete</a>

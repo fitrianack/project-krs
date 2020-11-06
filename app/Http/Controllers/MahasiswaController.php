@@ -12,6 +12,7 @@ use Auth;
 use App\User;
 use Illuminate\Http\Request;
 Use App\Mahasiswa;
+Use App\Matakuliah;
 use App\Krs;
 
 class MahasiswaController extends Controller
@@ -22,19 +23,37 @@ class MahasiswaController extends Controller
         return view('mahasiswa.content.dashboard');
     }
     //---------------------FITUR KRS--------------------
-    public function krs()
+    public function tambahkrs()
     {
         $krs = KRS::all();
         return view('mahasiswa.content.pilihkrs', compact('krs'));
     }
-    //Pilih KRS
-    public function lihatkrs(Request $request)
+    //menampilkan form krs
+    public function lihatkrs($id)
     {
-        $krs = new krs;
-        $krs->nim = $request->nim;
-        $krs->kode_matkul = $request->kode_matkul;
-        $krs->save();
-        return redirect('/lihatkrs')->with('status', 'KRS Berhasil Ditambah!');
+        $krs = KRS::all();
+        $users = User::where('id',$id)->get();
+        $matkul = Matakuliah::all();
+        return view('mahasiswa.content.ambilmatkul', compact('krs', 'users', 'matkul'));
+    }
+    //Pilih KRS
+    public function proseskrs()
+    {
+        $kode_matkul = Matakuliah::all();
+        $id_user = Auth::user()->id;
+        $mhs = User::where('id', $id_user)->first();
+
+        if ($request->isMethod('post')) {
+            $data = $request->all();
+
+            $mh = new Krs;
+            $mh->id .= $data['id'];
+            $mh->nim = $mhs['nim'];
+            $mh->kode_matkul = $data['kode_matkul'];
+            $mh->save();
+        }
+
+        return redirect('lihatkrs')->with('flash_message_success', 'KRS berhasil ditambahkan');
     }
     
     //--------------PROFIL------------------
