@@ -40,7 +40,7 @@ Route::match(['get', 'post'], '/updatedatadosen', 'DosenController@updatedata')-
 //hapus mata kuliah
 Route::get('hapus-dosen/{kode_dosen}', 'DosenController@destroy')->name('hapus-dosen');
 
-// --------------SISI MAHASISWA------------
+// ------------------------------ MAHASISWA------------------------------------------
 Route::get('/mahasiswa/dashboard', 'MahasiswaController@home');
 
 //pilih KRS
