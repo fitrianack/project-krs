@@ -29,7 +29,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus>
 
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">

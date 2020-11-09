@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h2>Selamat Datang di Halaman Dashboard Admin!</h2>
+<h2>Selamat Datang  {{ Auth::user()->name }} di Halaman Dashboard Admin!</h2>
 
 <br><br><br>
 

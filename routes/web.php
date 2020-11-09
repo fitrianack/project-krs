@@ -24,13 +24,6 @@ Route::get('dashboard-dosen', 'DosenController@dashboard')->name('dashboard-dose
 //profil dosen
 Route::get('index-dosen', 'DosenController@index')->name('index-dosen');
 
-//pilih mata kuliah untuk dosen
-Route::post('create-proses-dosen', 'DosenController@store')->name('create-proses-dosen');
-
-//update atau edit mata kuliah
-Route::get('update-dosen/{kode_dosen}', 'DosenController@edit')->name('update-dosen');
-Route::post('update-proses-dosen/{kode_dosen}', 'DosenController@update')->name('update-proses-dosen');
-
 //update atau edit profil dosen
 Route::get('update-dosen2', 'DosenController@editdata')->name('update-dosen2');
 Route::match(['get', 'post'], '/updatedatadosen', 'DosenController@updatedata')->name('updatedatadosen');
@@ -45,6 +38,7 @@ Route::get('edit-matkul/{id}', 'DosenController@editmatkul')->name('edit-matkul'
 Route::match(['get', 'post'], '/updatepilihmatkul/{id}', 'DosenController@editpilihan')->name('updatepilihmatkul');
 
 
+
 // --------------SISI MAHASISWA------------
 Route::get('/mahasiswa/dashboard', 'MahasiswaController@home');
 
@@ -56,7 +50,6 @@ Route::post('mahasiswa/pilihkrs', 'MahasiswaController@lihatkrs');
 Route::get('mahasiswa/profil', 'MahasiswaController@profil');
 Route::get('mahasiswa/editprofil', 'MahasiswaController@edit');
 Route::match(['get', 'post'], '/mahasiswa/updateprofil', 'MahasiswaController@update')->name('updatemahasiswa');
-
 
 
 //--------------------------------------SISI ADMIN-----------------------
@@ -82,3 +75,4 @@ Route::get('/matkul/delete/{kode_matkul}', 'AdminController@delete_matkul');
 Auth::routes();
 Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', 'HomeController@logout');

@@ -24,30 +24,35 @@
                 
                 <a class="navbar-brand" href="/">Aplikasi Kartu Rencana Studi</a>
             </div>
-    
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/">Profil</a></li>
                     <li><a href="/krs">Kartu Rencana Studi</a></li>
-                    <li class="nav-item">
-                    
-                <li class="nav-item"></li>
+                    <li><a href="/logout">Logout</a></li>
+                    @guest
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endguest
                 </ul>
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                        @endguest
-                    </ul>
             </div><!-- /.navbar-collapse -->
         </div>
     </nav>
-
     <div class="container">
         @yield('content')
     </div>
-
     <script src="/assets/js/jquery-2.2.0.js"></script>
     <script src="/assets/js/bootstrap.js"></script>
     <script type="text/javascript">
