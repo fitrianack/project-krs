@@ -25,7 +25,6 @@ Route::get('dashboard-dosen', 'DosenController@dashboard')->name('dashboard-dose
 Route::get('index-dosen', 'DosenController@index')->name('index-dosen');
 
 //pilih mata kuliah untuk dosen
-Route::get('create-dosen', 'DosenController@create')->name('create-dosen');
 Route::post('create-proses-dosen', 'DosenController@store')->name('create-proses-dosen');
 
 //update atau edit mata kuliah
@@ -37,14 +36,13 @@ Route::get('update-dosen2', 'DosenController@editdata')->name('update-dosen2');
 Route::match(['get', 'post'], '/updatedatadosen', 'DosenController@updatedata')->name('updatedatadosen');
 
 //hapus mata kuliah
-Route::get('hapus-dosen/{kode_dosen}', 'DosenController@destroy')->name('hapus-dosen');
+Route::get('hapus-matkul/{id}', 'DosenController@destroy')->name('hapus-matkul');
 
-//pilih matkul
+//pilih matkul dan edit hasilnya
+Route::get('create-dosen/{id}', 'DosenController@create');
 Route::match(['get', 'post'], '/pilih-matkul', 'DosenController@pilihmatkul')->name('pilih-matkul');
-
-//pilih matkul
-Route::get('edit-matkul', 'DosenController@editmatkul')->name('edit-matkul');
-Route::match(['get', 'post'], '/updatepilihmatkul', 'DosenController@editpilihan')->name('updatepilihmatkul');
+Route::get('edit-matkul/{id}', 'DosenController@editmatkul')->name('edit-matkul');
+Route::match(['get', 'post'], '/updatepilihmatkul/{id}', 'DosenController@editpilihan')->name('updatepilihmatkul');
 
 
 // --------------SISI MAHASISWA------------

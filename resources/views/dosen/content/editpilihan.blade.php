@@ -6,7 +6,7 @@
 <legend>Edit Profil Dosen</legend>
 <div class="card-body">
     <div class="table-responsive">
-        <form action="/updatepilihmatkul" method="POST">
+        <form action="/updatepilihmatkul/{{$dosen->id}}" method="POST">
             {{csrf_field()}}
             <div class="custom-control custom-checkbox">
                 <label for="nama_matkul">Nama Mata Kuliah</label>
