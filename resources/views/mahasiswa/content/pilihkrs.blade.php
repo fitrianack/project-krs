@@ -4,7 +4,7 @@
 
 @section('content')
 
-<a href="/mahasiswa/ambilkrs" class="btn btn-default pull-right">Tambah</a>
+<a href="/mahasiswa/ambilkrs/{{$users}}" class="btn btn-default pull-right">Tambah</a>
 <table class="table table-hover">
     <thead>
         <tr>

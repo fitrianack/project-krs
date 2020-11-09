@@ -10,7 +10,6 @@ use Validator;
 use Session;
 use Auth;
 use App\User;
-use App\Dosen;
 use App\Matakuliah;
 use Illuminate\Http\Request;
 
@@ -19,19 +18,15 @@ class DosenController extends Controller
     //menampilkan dashaboard dosen
     public function dashboard()
     {
-        $dosen = \App\Dosen::all();
-        $matkul = \App\Matakuliah::all();
-        $users = \App\User::all();
-        $id_user = Auth::user()->id;
-        $data = User::where('id', $id_user)->first();
-        $dataa = User::get();
-        return  view('dosen.content.dashboard', compact('dataa'));
+        $user_id = Auth::user()->id;
+        $data = User::get();
+        $users = User::where('id', $user_id)->first();
+        return  view('dosen.content.dashboard', compact('data'));
     }
 
     //menampilkan profil dosen
     public function index()
     {
-        $dosen = \App\Dosen::all();
         $users = \App\User::where('id', Auth::user()->id)->first();
         return  view('dosen.content.index', compact('dosen', 'users'));
     }
@@ -39,45 +34,18 @@ class DosenController extends Controller
     //mengarahkan ke form pilih mata kuliah
     public function create()
     {
-        $dosen = \App\Dosen::all();
         $matkul = \App\Matakuliah::all();
         $users = \App\User::where('id', Auth::user()->id)->first();
-        return view('dosen.content.create', compact('dosen', 'matkul', 'users'));
-    }
-
-    //proses memilih mata kuliah (untuk sementara)
-    public function store(Request $request)
-    {
-        $dosen = new dosen;
-        $dosen->nama_dosen = $request->nama_dosen;
-        $dosen->kode_matkul = $request->kode_matkul;
-        $dosen->save();
-
-        if ($dosen) {
-            return redirect("/dashboard-dosen")->with('alert success', 'Mata Kuliah berhasil ditambahkan!');;
-        } else {
-            return redirect("/create-dosen")->with('alert danger', 'Mata Kuliah gagal ditambahkan!');;
-        }
+        return view('dosen.content.create', compact('matkul', 'users'));
     }
 
     //mengarahkan ke tampilan form edit mata kuliah
     public function edit($kode_dosen)
     {
-        $dosen = \App\Dosen::find($kode_dosen);
         $matkul = \App\Matakuliah::all();
         return view('dosen.content.editmatkul', compact('dosen', 'matkul'));
     }
 
-    //proses edit mata kuliah
-    public function update(Request $request, $kode_dosen)
-    {
-        $dosen = Dosen::find($request->kode_dosen);
-        $dosen->nama_dosen = $request->nama_dosen;
-        $dosen->kode_matkul = $request->kode_matkul;
-        $dosen->save();
-
-        return redirect("/dashboard-dosen");
-    }
 
     //mengarahkan ke form edit profil dosen
     public function editdata()
@@ -102,14 +70,6 @@ class DosenController extends Controller
             return redirect('/index-dosen')->with('status', 'Profil Berhasil diperbarui');
         }
         return view('dosen.content.edit')->with(compact('users'));
-    }
-
-    //hapus data mata kuliah
-    public function destroy($kode_dosen)
-    {
-        $destroy = Dosen::find($kode_dosen);
-        $destroy->delete();
-        return redirect('/dashboard-dosen')->with('status', 'Data Dosen Berhasil Dihapus!');
     }
 
     //memilih  mata kuliah untuk dosen

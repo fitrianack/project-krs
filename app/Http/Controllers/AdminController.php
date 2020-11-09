@@ -10,8 +10,6 @@ class AdminController extends Controller
 {
     //Halaman Dashboard
     public function home(){
-
-    
         return view('admin.dashboard');
     }
 
