@@ -32,7 +32,7 @@
 
                     <li><a href="/dashboard-dosen" style="font-size:15px; font-weight:bolder">Dashboard Dosen</a></li>
                     <li><a href="/index-dosen">Profil</a></li>
-                    <li><a href="/create-dosen">Mata Kuliah</a></li>
+                    <li><a href="/create-dosen/{users}">Mata Kuliah</a></li>
                     <li>
                         <a href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}

@@ -9,22 +9,25 @@
         <table class="table table-bordered">
             <tbody>
                 <tr>
-                    <th style="color: black;">No</th>
+                    <th style="color: black;">Kode Dosen</th>
                     <th style="color: black;">Kode Mata Kuliah yang diampu</th>
                     <th style="color: black;">Kapasitas</th>
                     <th style="color: black;">Aksi</th>
                 </tr>
                 <tr>
                     <?php $no = 0; ?>
-                    @foreach($data as $d)
+                    @foreach($dosenn as $d)
                     <?php $no++; ?>
                 <tr>
-                    <td>{{$no}}</td>
+                    <td>{{$d->nidn}}</td>
                     <td>{{$d->kode_matkul}}</td>
                     <td>{{$d->kapasitas}}</td>
                     <td>
-                        <a href="/edit-matkul" class="btn btn-info">
+                        <a href="/edit-matkul/{{$d->id}}" class="btn btn-info">
                             <i class="fa fa-pencil-square-o" aria-hidden="true">Edit</i>
+                        </a>
+                        <a href="/hapus-matkul/{{$d->id}}" class="btn btn-danger" onclick="return confirm('Yakin mau dihapus ?')">
+                            <i class="fa fa-trash" aria-hidden="true">Hapus</i>
                         </a>
                     </td>
                 </tr>

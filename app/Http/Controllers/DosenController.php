@@ -9,19 +9,21 @@ use App\Rules\MatchOldPassword;
 use Validator;
 use Session;
 use Auth;
+use App\Dosen;
 use App\User;
 use App\Matakuliah;
 use Illuminate\Http\Request;
 
 class DosenController extends Controller
 {
-    //menampilkan dashaboard dosen
+    //menampilkan dashboard dosen
     public function dashboard()
     {
         $user_id = Auth::user()->id;
         $data = User::get();
         $users = User::where('id', $user_id)->first();
-        return  view('dosen.content.dashboard', compact('data'));
+        $dosenn = Dosen::all();
+        return  view('dosen.content.dashboard', compact('data', 'dosenn'));
     }
 
     //menampilkan profil dosen
@@ -30,22 +32,6 @@ class DosenController extends Controller
         $users = \App\User::where('id', Auth::user()->id)->first();
         return  view('dosen.content.index', compact('dosen', 'users'));
     }
-
-    //mengarahkan ke form pilih mata kuliah
-    public function create()
-    {
-        $matkul = \App\Matakuliah::all();
-        $users = \App\User::where('id', Auth::user()->id)->first();
-        return view('dosen.content.create', compact('matkul', 'users'));
-    }
-
-    //mengarahkan ke tampilan form edit mata kuliah
-    public function edit($kode_dosen)
-    {
-        $matkul = \App\Matakuliah::all();
-        return view('dosen.content.editmatkul', compact('dosen', 'matkul'));
-    }
-
 
     //mengarahkan ke form edit profil dosen
     public function editdata()
@@ -75,45 +61,54 @@ class DosenController extends Controller
     //memilih  mata kuliah untuk dosen
     public function pilihmatkul(Request $request)
     {
-        $user_id = Auth::user()->id;
-        $users = User::where('id', $user_id)->first();
-
-
-        if ($request->isMethod('post')) {
-            $data = $request->all();
-
-            User::where(['id' => $user_id])->update([
-                'kode_matkul' => $data['kode_matkul']
-            ]);
-            return redirect('/dashboard-dosen')->with('status', 'Profil Berhasil diperbarui');
+        for ($i = 0; $i < sizeof($request->kode_matkul); $i++) {
+            $dosen = new Dosen;
+            $dosen->nidn = $request->id;
+            $dosen->kode_matkul = $request->kode_matkul[$i];
+            $dosen->save();
         }
-        return view('dosen.content.dashboard')->with(compact('users'));
+
+        if ($dosen) {
+            return redirect('dashboard-dosen')->with('flash_message_success', 'Mata Kuliah berhasil ditambahkan');
+        } else {
+            return redirect('dashboard-dosen')->with('flash_message_danger', 'Mata Kuliah gagal ditambahkan');
+        }
     }
 
-    //mengarahkan ke form edit pilihan matkul
-    public function editmatkul()
+    //mengarahkan ke form pilih mata kuliah
+    public function create($id)
     {
-        $users = User::get();
-        $users = \App\User::where('id', Auth::user()->id)->first();
         $matkul = \App\Matakuliah::all();
-        return view('dosen.content.editpilihan', compact('users', 'matkul'));
+        $users = \App\User::where('id', Auth::user()->id)->first();
+        $dosen = \App\Dosen::all();
+        return view('dosen.content.create', compact('matkul', 'users', 'dosen'));
+    }
+
+
+    //mengarahkan ke form edit pilihan matkul
+    public function editmatkul($id)
+    {
+        $matkul = \App\Matakuliah::all();
+        $dosen = \App\Dosen::find($id);
+        return view('dosen.content.editpilihan', compact('matkul', 'dosen'));
     }
 
 
     //mengedit mata kuliah untuk dosen
-    public function editpilihan(Request $request)
+    public function editpilihan(Request $request, $id)
     {
-        $user_id = Auth::user()->id;
-        $users = User::where('id', $user_id)->first();
+        $dosen = Dosen::find($request->id);
+        $dosen->kode_matkul = $request->kode_matkul;
+        $dosen->kapasitas = $request->kapasitas;
+        $dosen->save();
 
-        if ($request->isMethod('post')) {
-            $data = $request->all();
+        return redirect('/dashboard-dosen')->with('status', 'Profil Berhasil diperbarui');
+    }
 
-            User::where(['id' => $user_id])->update([
-                'kode_matkul' => $data['kode_matkul'],  'kapasitas' => $data['kapasitas']
-            ]);
-            return redirect('/dashboard-dosen')->with('status', 'Profil Berhasil diperbarui');
-        }
-        return view('dosen.content.dashboard')->with(compact('users'));
+    public function destroy($id)
+    {
+        $destroy = Dosen::find($id);
+        $destroy->delete();
+        return redirect('/dashboard-dosen')->with('status', 'Data Keuangan Berhasil Dihapus!');
     }
 }
