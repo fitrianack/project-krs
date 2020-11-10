@@ -56,28 +56,28 @@ class MahasiswaController extends Controller
     }
 
     //Edit KRS get
-    public function editkrs()
+    public function editkrs($id)
     {
-        $krs = Krs::where('nim', $nim)->first();
+        $krs = Krs::find($id);
         $users = \App\User::get();
         $mk = Matakuliah::get();
-        return view('mahasiswa/editkrs', compact('krs', 'users', 'mk'));
+        return view('mahasiswa.content.editkrs', compact('krs', 'users', 'mk'));
     }
 
     //edit KRS post
-    public function editp($nim, Request $request)
+    public function editp(Request $request)
     {
-        $edit_krs = Krs::find($nim);
-        $edit_krs->kode_matkul = $request->kode_matkul;
-        $edit_krs->save();
-        return view('mahasiswa/lihatkrs');
+        $krs = Krs::find($request->id);
+        $krs->kode_matkul = $request->kode_matkul;
+        $krs->save();
+        return redirect('mahasiswa/lihatkrs');
     }
 
     //hapus krs
-    public function hapuskrs($kode_matkul)
+    public function hapuskrs($id)
     {
-        Krs::where('kode_matkul', $kode_matkul)->delete();
-        return view('mahasiswa/lihatkrs');
+        Krs::where('id', $id)->delete();
+        return redirect('mahasiswa/lihatkrs');
     }
 
     //--------------PROFIL------------------

@@ -24,19 +24,20 @@ Route::get('dashboard-dosen', 'DosenController@dashboard')->name('dashboard-dose
 //profil dosen
 Route::get('index-dosen', 'DosenController@index')->name('index-dosen');
 
+//pilih mata kuliah untuk dosen
+Route::get('create-dosen', 'DosenController@create')->name('create-dosen');
+Route::post('create-proses-dosen', 'DosenController@store')->name('create-proses-dosen');
+
+//update atau edit mata kuliah
+Route::get('update-dosen/{kode_dosen}', 'DosenController@edit')->name('update-dosen');
+Route::post('update-proses-dosen/{kode_dosen}', 'DosenController@update')->name('update-proses-dosen');
+
 //update atau edit profil dosen
 Route::get('update-dosen2', 'DosenController@editdata')->name('update-dosen2');
 Route::match(['get', 'post'], '/updatedatadosen', 'DosenController@updatedata')->name('updatedatadosen');
 
 //hapus mata kuliah
-Route::get('hapus-matkul/{id}', 'DosenController@destroy')->name('hapus-matkul');
-
-//pilih matkul dan edit hasilnya
-Route::get('create-dosen/{id}', 'DosenController@create');
-Route::match(['get', 'post'], '/pilih-matkul', 'DosenController@pilihmatkul')->name('pilih-matkul');
-Route::get('edit-matkul/{id}', 'DosenController@editmatkul')->name('edit-matkul');
-Route::match(['get', 'post'], '/updatepilihmatkul/{id}', 'DosenController@editpilihan')->name('updatepilihmatkul');
-
+Route::get('hapus-dosen/{kode_dosen}', 'DosenController@destroy')->name('hapus-dosen');
 
 
 // --------------SISI MAHASISWA------------
@@ -53,9 +54,9 @@ Route::get('mahasiswa/editprofil', 'MahasiswaController@edit');
 Route::match(['get', 'post'], '/mahasiswa/updateprofil', 'MahasiswaController@update')->name('updatemahasiswa');
 
 //edit dan hapus KRS
-Route::get('mahasiswa/lihatkrs{kode_matkul}', 'MahasiswaController@editkrs');
-Route::post('mahasiswa/lihatkrs{kode_matkul}', 'MahasiswaController@editp');
-Route::get('hapus_krs/{kode_matkul}', 'MahasiswaController@hapuskrs');
+Route::get('mahasiswa/editkrs/{id}', 'MahasiswaController@editkrs');
+Route::match(['get', 'post'], '/mahasiswa/updatekrs/{id}', 'MahasiswaController@editp')->name('updatekrs');
+Route::get('mahasiswa/deletekrs/{id}', 'MahasiswaController@hapuskrs');
 
 //--------------------------------------SISI ADMIN-----------------------
 

@@ -21,8 +21,8 @@
             <td>{{$krss->nim}}</td>
             <td>{{$krss->kode_matkul}}</td>
             <td>
-                <a href="" class="btn btn-warning btn-s">Edit</a>
-                <a href="" class="btn btn-danger btn-s" onclick="return confirm('Apa anda yakin?')">Delete</a>
+                <a href="/mahasiswa/editkrs/{{$krss->id}}" class="btn btn-warning btn-s">Edit</a>
+                <a href="/mahasiswa/deletekrs/{{$krss->id}}" class="btn btn-danger btn-s" onclick="return confirm('Apa anda yakin?')">Delete</a>
             </td>
         </tr>
     @endforeach      

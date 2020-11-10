@@ -22,13 +22,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 
-                <a class="navbar-brand" href="/">Aplikasi Kartu Rencana Studi</a>
+                <a class="navbar-brand" href="#">Aplikasi Kartu Rencana Studi</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/">Profil</a></li>
-                    <li><a href="/mahasiswa/krs">Kartu Rencana Studi</a></li>
+                    <li><a href="/mahasiswa/profil">Profil</a></li>
+                    <li><a href="/mahasiswa/lihatkrs">Kartu Rencana Studi</a></li>
                     <li>
                         <a href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
