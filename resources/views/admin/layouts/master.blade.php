@@ -31,6 +31,20 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/role">Role User</a></li>
                     <li><a href="/matkul">Mata Kuliah</a></li>
+                    <li>
+                        <a href="#" role="button" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+                    <li>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div>

@@ -30,7 +30,7 @@ class DosenController extends Controller
     public function index()
     {
         $users = \App\User::where('id', Auth::user()->id)->first();
-        return  view('dosen.content.index', compact('dosen', 'users'));
+        return  view('dosen.content.index', compact('users'));
     }
 
     //mengarahkan ke form edit profil dosen
