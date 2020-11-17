@@ -77,6 +77,5 @@ Route::get('/matkul/delete/{kode_matkul}', 'AdminController@delete_matkul');
 
 //Fitur Login
 Auth::routes();
-Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', 'HomeController@logout');

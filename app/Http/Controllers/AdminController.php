@@ -48,7 +48,7 @@ class AdminController extends Controller
             $user = User::find($request->id);
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->password = $request->password;
+            $user->password = bcrypt($request->password);
             $user->role = $request->role;
     
             $user->save();

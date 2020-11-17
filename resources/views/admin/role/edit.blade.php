@@ -31,7 +31,12 @@
     </div>
     <div class="form-group">
         <label for="nama">Password</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Isikan Password" value="{{$user->password}}">
+        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+        @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
         <small class="block text-danger"></small>
     </div>
     <fieldset class="form-group">
